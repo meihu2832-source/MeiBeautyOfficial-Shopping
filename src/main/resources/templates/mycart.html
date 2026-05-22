@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<title>我的購物車</title>
+  <style>
+    /* 把表頭整列隱藏 */
+/*     #cart-table thead { */
+/*         display: none; */
+/*     } */
+  </style>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/font-awesome.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/templatemo-hexashop.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/owl-carousel.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/lightbox.css}">
+
+
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a th:href="@{/home/index}" class="logo">
+                            <img th:src="@{/assets/images/logo.png}">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a th:href="@{/home/index}" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=2}">底妝類</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=3}">保養類</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=4}">彩妝類</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">品牌相關</a>
+                                <ul>
+                                    <li><a th:href="@{/home/goAbout}">About Us</a></li>
+                                    <li><a th:href="@{/home/goProducts}">產品列表</a></li>
+                                    <li><a th:href="@{/home/goSingleProduct}">熱銷冠軍</a></li>
+                                    <li><a th:href="@{/home/goContact}">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">會員專區</a>
+                                <ul>
+                                    <li><a th:href="@{/login/index}" class="loging_Class">會員登入</a></li>
+                                    <li><a href="#">最新優惠</a></li>
+                                    <li><a th:href="@{/home/heartList}">我的收藏清單</a></li>
+                                    <li><a rel="nofollow" href="https://www.youtube.com/" target="_blank">YT頻道</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a th:href="@{/mycart.html}" class="mycart_Class">購物車</a></li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+<br>
+<br> 
+<br>
+<br>
+<br> 
+<div>
+<!-- <h4 style="margin-left: 50px;">我的購物車清單</h4> -->
+</div>
+<br>    
+<div id="cart-message" style="color:red; margin: 10px 0; margin-left: 50px;"></div>
+<br> 
+<br> 
+<table id="cart-table" class="display" style="width:80%;margin:auto;">
+    <thead id="table-head">
+        <tr>
+            <th>商品資料</th>
+            <th></th>
+            <th>單件價格</th>
+            <th>數量</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- 購物車末尾 總計金額 及結帳按鈕
+			結帳只是 導向另一個結帳頁面（例如「/checkout」），資料不是立即送出。-->
+<div class=total_Price style="text-align: center;">
+<hr>
+<p >總計金額 : <span id="totalPrice" >0</span></p>
+<a th:href="@{/home/CheckOut}" class="checkOut_class">結帳</a>
+
+
+</div>
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img th:src="@{/assets/images/white-logo.png}" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                            <li><a href="#">meiBeauty@company.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">SkinCare Shopping</a></li>
+                        <li><a href="#">Foundation Shopping</a></li>
+                        <li><a href="#">MakeUp Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a th:href="@{/home/index}">Homepage</a></li>
+                        <li><a th:href="@{/home/goAbout}">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2025 MeiBeauty Co., Ltd. All Rights Reserved. 
+                        
+                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://x.com/?&"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://tw.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://www.behance.net/"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- jQuery -->
+<!--     <script th:src="@{/assets/js/jquery-2.1.0.min.js}"></script> -->
+
+    <!-- Bootstrap -->
+    <script th:src="@{/assets/js/popper.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+
+    <!-- Plugins -->
+    <script th:src="@{/assets/js/owl-carousel.js}"></script>
+    <script th:src="@{/assets/js/accordions.js}"></script>
+    <script th:src="@{/assets/js/datepicker.js}"></script>
+    <script th:src="@{/assets/js/scrollreveal.min.js}"></script>
+    <script th:src="@{/assets/js/waypoints.min.js}"></script>
+    <script th:src="@{/assets/js/jquery.counterup.min.js}"></script>
+    <script th:src="@{/assets/js/imgfix.min.js}"></script> 
+    <script th:src="@{/assets/js/slick.js}"></script> 
+    <script th:src="@{/assets/js/lightbox.js}"></script> 
+    <script th:src="@{/assets/js/isotope.js}"></script> 
+    
+    <!-- Global Init -->
+    <script th:src="@{/assets/js/custom.js}"></script>
+<script th:inline="javascript">
+
+//從 localStorage 讀購物車
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+// 存回 localStorage
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// let cartPublic = JSON.parse(localStorage.getItem("cart")) || [];
+
+//若購物車清單是空的，則畫面出現文字
+$(document).ready(function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let messageDiv = $("#cart-message");
+    let checkOutBtn = $(".checkOut_class");
+    let cartTable = $('#cart-table');
+    if (cart.length == 0) {
+        messageDiv.text("購物車是空的！");
+        checkOutBtn.hide(); // 🔹隱藏結帳按鈕
+        cartTable.hide();//隱藏datatable
+        return; // 不初始化 DataTable
+    } else {
+        messageDiv.text(""); // 清空訊息
+        checkOutBtn.show(); // 🔹顯示結帳按鈕
+        DT();
+    }
+    
+});
+ 
+let table;
+function DT(){
+	  let cartPublic = JSON.parse(localStorage.getItem("cart")) || [];
+	  console.log("Dt : " + cartPublic);
+	  if (table){table.destroy();}
+//若localStorage存有購物車ID清單，則用datatable呈現
+   table = $('#cart-table').DataTable({
+        serverSide: true,
+        processing: true,
+        searching: false,
+        paging: false,
+        info: false,      // 🚫 關閉底下的 info
+        ajax: {
+            url: /*[[@{/api/restController/cart/receiveCart}]]*/'',
+            type: 'POST',
+            contentType: 'application/json',
+            async:false,
+            data: function() {
+                return JSON.stringify(cartPublic);
+            },
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'photoUrl', render: data => '<img src="http://localhost:8080/MeiBeautyOfficial' + data + '" width="80"/>' },
+            { data: 'name' },
+            { data: 'price' },
+            { 
+                data: null, 
+                render: function(data, type, row) {
+        		    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        		    // 統計出現次數
+        		    let quantity = cart.filter(id => id == row.productId).length;
+        		    row.quantity = quantity;  // 👈 存到 row 裡面
+                	return `
+                    <button class="btn btn-sm btn-secondary btn-decrease" data-id="${row.productId}">-</button>
+                    <span class="mx-2">${row.quantity}</span>
+                    <button class="btn btn-sm btn-secondary btn-increase" data-id="${row.productId}">+</button>
+                `
+            }},
+            { data: 'productId',
+            	render: function(productId, type, row) {
+        		    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        		    // 統計出現次數
+        		    let quantity = cart.filter(id => id == productId).length;
+        		    let price = row.price;
+					let totalSingle = price*quantity;
+        		    return totalSingle;
+
+            	}}
+            
+        ],
+        drawCallback: function(settings) {
+            // ✅ 每次 DataTable 畫面更新後就呼叫
+            updateTotalPrice(this.api());
+        }
+    });    
+  }
+    
+//🛒 更新購物車數字 (可重複呼叫)
+  function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let cartCount = cart.length;
+
+      let cartLink = document.querySelector(".mycart_Class");
+      if (cartCount > 0) {
+          cartLink.textContent = "購物車(" + cartCount + ")";
+      } else {
+          cartLink.textContent = "購物車";
+      }
+  };
+
+// 🚀 一進到頁面就跑一次
+  document.addEventListener("DOMContentLoaded", function () {
+      updateCartCount();
+  });
+    
+    
+    //+-按鈕監聽功能
+ 	// 增加數量
+    $('#cart-table').on('click', '.btn-increase', function() {
+    	let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    	// $(this) = 你點到的 <button>
+        // .closest('tr') = 往外層找，找到最近的 <tr>
+        const rowData = table.row($(this).closest('tr')).data();
+     	// 直接拿到 productId
+        const id = rowData.productId;
+     	// 把這個 id 推入 cart 陣列
+        cart.push(id);
+
+        // 存回 localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // 重新渲染 DataTable
+//         table.ajax.reload();
+        DT();
+                
+     	// 更新購物車文字顯示
+  	    let cartCount = cart.length;
+  	    let cartLink = $(".mycart_Class"); // 選取你的購物車 <a> 元素
+  	    if (cartCount > 0) {
+  	        cartLink.text("購物車(" + cartCount + ")");
+  	    } else {
+  	        cartLink.text("購物車");
+  	    }
+  	    
+  	    alert("商品已加入購物車！");
+    });
+
+    // 減少數量
+    $('#cart-table').on('click', '.btn-decrease', function() {
+    	let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    	// $(this) = 你點到的 <button>
+        // .closest('tr') = 往外層找，找到最近的 <tr>
+        const rowData = table.row($(this).closest('tr')).data();
+     	// 直接拿到 productId
+        const id = rowData.productId;
+     	// 找到 id 在陣列中的位置
+        const index = cart.indexOf(id);
+     	//找到該id在陣列中的數量
+        let quantity = cart.filter(myId => myId == id).length;
+        // 如果存在就刪掉
+        if (index !== -1 && quantity>1) {
+          cart.splice(index, 1); // 刪掉一個元素
+        }
+        //如果id只有一個，應刪除整列
+        else if (index !=-1 && quantity==1) {
+        	// 如果只有一個
+        	cart.splice(index, 1); // 刪掉一個元素
+
+        }
+        
+     	// 存回 localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        // 重新渲染 DataTable
+//         table.ajax.reload();
+        DT(); 
+        
+         
+        //若購物車內容為空，則回歸顯示"購物車是空的！"
+        if (cart.length == 0){
+        	$('#cart-table').hide();
+        	let cartEmptyMessage = $("#cart-message");
+        	cartEmptyMessage.text("購物車是空的！");
+        	
+        }
+        
+     	// 更新購物車文字顯示
+  	    let cartCount = cart.length;
+  	    let cartLink = $(".mycart_Class"); // 選取你的購物車 <a> 元素
+  	    if (cartCount > 0) {
+  	        cartLink.text("購物車(" + cartCount + ")");
+  	    } else {
+  	        cartLink.text("購物車");
+  	    }
+  	    
+  	    alert("商品從購物車移除！");
+        
+    });
+
+
+
+function updateTotalPrice(table) {
+	// 直接從 localStorage 取得完整 id 清單
+    let ids = JSON.parse(localStorage.getItem('cart') || '[]');
+	console.log('ids to send:', ids);
+    fetch(/*[[@{/api/restController/cart/total}]]*/'', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ids)
+    })
+    .then(response => response.json())  // 後端已經算好總金額
+    .then(total => {
+        document.getElementById('totalPrice').innerText = total;
+    });
+}
+
+
+
+</script>
+
+
+</body>
+</html>

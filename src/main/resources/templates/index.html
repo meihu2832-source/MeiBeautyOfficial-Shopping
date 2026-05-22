@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>MeiBeautyOfficial</title>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/font-awesome.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/templatemo-hexashop.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/owl-carousel.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/lightbox.css}">
+<!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a th:href="@{/home/index}" class="logo">
+                            <img th:src="@{/assets/images/logo.png}">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="#men">底妝類</a></li>
+                            <li class="scroll-to-section"><a href="#women">保養類</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=4}">彩妝類</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">品牌相關</a>
+                                <ul>
+                                    <li><a th:href="@{/home/goAbout}">About Us</a></li>
+                                    <li><a th:href="@{/home/goProducts}">產品列表</a></li>
+                                    <li><a th:href="@{/home/goSingleProduct}">熱銷冠軍</a></li>
+                                    <li><a th:href="@{/home/goContact}">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">會員專區</a>
+                                <ul>
+                                    <li><a th:href="@{/login/index}" class="loging_Class">會員登入</a></li>
+                                    <li><a href="#">最新優惠</a></li>
+                                    <li><a th:href="@{/home/heartList}">我的收藏清單</a></li>
+                                    <li><a rel="nofollow" href="https://www.youtube.com/" target="_blank">YT頻道</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a th:href="@{/home/mycart}" class="mycart_Class">購物車</a></li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>Mei Beauty品牌經營</h4>
+                                <span>結合科學實證與天然成分，兼顧保養與彩妝，讓肌膚在工作與生活之間保持健康與光澤。</span>
+                                <div class="main-border-button">
+                                    <a th:href="@{/home/goProducts}">立即下單 !</a>
+                                </div>
+                            </div>
+                            <img th:src="@{/assets/images/left-banner-image.jpg}" alt="cannot show image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Skin Care</h4>
+                                            <span>肌膚保養、抗老的最佳選擇 !</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Skin Care</h4>
+                                                <p>肌膚重返平衡，綻放透亮光澤。</p>
+                                                <div class="main-border-button">
+                                                    <a th:href="@{/home/goProducts?category=3}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img th:src="@{/assets/images/baner-right-image-01.jpg}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Foundation</h4>
+                                            <span>輕盈持久，宛若天生好膚質。</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Foundation</h4>
+                                                <p>添加玻尿酸保濕精華與控油微粒，全天候維持水潤與清爽。</p>
+                                                <div class="main-border-button">
+                                                    <a th:href="@{/home/goProducts?category=2}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img th:src="@{/assets/images/baner-right-image-02.jpg}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Cosmetics</h4>
+                                            <span>一抹自信，恆久迷人。</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Cosmetics</h4>
+                                                <p>富含維他命E與乳木果油，滋潤雙唇同時顯色飽滿，從會議室到約會都能完美應對。</p>
+                                                <div class="main-border-button">
+                                                    <a th:href="@{/home/goProducts?category=4}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img th:src="@{/assets/images/baner-right-image-03.jpg}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>關於品牌</h4>
+                                            <span>專業成分 × 優雅設計，陪伴妳的每一天。</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>關於品牌</h4>
+                                                <p>陪伴妳在每個日常時刻，綻放優雅光彩。</p>
+                                                <div class="main-border-button">
+                                                    <a th:href="@{/home/goAbout}">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img th:src="@{/assets/images/baner-right-image-04.jpg}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="men">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>底妝新鮮貨</h2>
+                        <span>MeiBeauty 底妝系列結合保養級配方，兼顧遮瑕與透亮，讓妝容服貼一整天。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="men-item-carousel">
+                        <div class="owl-men-item owl-carousel">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/home/single-product}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product1.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product1.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/9.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>持妝粉底液</h4>
+                                    <span>$3150</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product2.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product2.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/10.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>光澤粉底液</h4>
+                                    <span>$3900</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product3.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product3.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/19.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>潤色妝前乳</h4>
+                                    <span>$1280</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product4.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product4.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/9.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>持妝粉底液</h4>
+                                    <span>$3150</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Men Area Ends ***** -->
+
+    <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Skin Care</h2>
+                        <span>結合專業實證成分與植物萃取，幫助肌膚由內而外恢復健康與彈性。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="women-item-carousel">
+                        <div class="owl-women-item owl-carousel">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product5.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product5.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/3.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>洗面清潔組</h4>
+                                    <span>$1280</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product6.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product6.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/16.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>髮香噴霧</h4>
+                                    <span>$1100</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product7.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product7.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/5.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>清爽保濕霜</h4>
+                                    <span>$2800</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a th:href="@{/single-product.html}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="addHeart" th:attr="data-id=${product8.productId}" onclick="doAddCollect(this)"><i class="fa fa-star"></i></a></li>
+                                            <li><a class="addToCart" th:attr="data-id=${product8.productId}" onclick="doAddToCart(this)"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img th:src="@{/assets/images/3.jpg}" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>洗面清潔組</h4>
+                                    <span>$1280</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Explore Our Brand</h2>
+                        <span>MeiBeauty，相信美麗源自自信與自在。結合科學專研與溫柔呵護，打造兼顧保養與妝容的產品。陪伴妳在每個日常時刻，綻放優雅光彩。</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>自信，不需妥協；美麗，來自真實的妳。</p>
+                        </div>
+                        <p>在快節奏的城市生活裡，女性常在多重角色間切換——專業的職場人、溫柔的伴侶、獨立的自己。MeiBeauty 因此誕生，我們相信美麗並非華麗的偽裝，而是源自內心的自信與自在。我們以 「科學專研 × 溫柔呵護」 為核心理念，嚴選安全成分，結合創新配方，打造能兼顧保養與妝容的產品。每一件作品，都是為了讓妳在繁忙的日常裡，也能用最簡單的步驟，展現最優雅的一面。
+MeiBeauty 不只是一個彩妝保養品牌，更是一種陪伴。無論在會議桌前，還是下班後的微醺時刻，我們希望妳都能帶著一抹自信，優雅前行。</p>
+                        <p>「美，不是遮掩，而是綻放。」</p>
+<!--                         <div class="main-border-button"> -->
+<!--                             <a th:href="@{/products.html}">Discover More</a> -->
+<!--                         </div> -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Makeup</h4>
+                                    <span>Latest Collection</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img th:src="@{/assets/images/explore-image-01.jpg}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img th:src="@{/assets/images/explore-image-02.jpg}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Skincare</h4>
+                                    <span>Latest Collection</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img th:src="@{/assets/images/white-logo.png}" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                            <li><a href="#">meiBeauty@company.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">SkinCare Shopping</a></li>
+                        <li><a href="#">Foundation Shopping</a></li>
+                        <li><a href="#">MakeUp Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2025 MeiBeauty Co., Ltd. All Rights Reserved. 
+                        
+                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://x.com/?&"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://tw.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://www.behance.net/"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- jQuery -->
+    <script th:src="@{/assets/js/jquery-2.1.0.min.js}"></script>
+
+    <!-- Bootstrap -->
+    <script th:src="@{/assets/js/popper.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+
+    <!-- Plugins -->
+    <script th:src="@{/assets/js/owl-carousel.js}"></script>
+    <script th:src="@{/assets/js/accordions.js}"></script>
+    <script th:src="@{/assets/js/datepicker.js}"></script>
+    <script th:src="@{/assets/js/scrollreveal.min.js}"></script>
+    <script th:src="@{/assets/js/waypoints.min.js}"></script>
+    <script th:src="@{/assets/js/jquery.counterup.min.js}"></script>
+    <script th:src="@{/assets/js/imgfix.min.js}"></script> 
+    <script th:src="@{/assets/js/slick.js}"></script> 
+    <script th:src="@{/assets/js/lightbox.js}"></script> 
+    <script th:src="@{/assets/js/isotope.js}"></script> 
+    
+    <!-- Global Init -->
+    <script th:src="@{/assets/js/custom.js}"></script>
+
+    <script th:inline="javascript">
+ // 🛒 更新購物車數字 (可重複呼叫)
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartCount = cart.length;
+
+        let cartLink = document.querySelector(".mycart_Class");
+        if (cartCount > 0) {
+            cartLink.textContent = "購物車(" + cartCount + ")";
+        } else {
+            cartLink.textContent = "購物車";
+        }
+    }
+ 
+ // 🚀 一進到頁面就跑一次
+    document.addEventListener("DOMContentLoaded", function () {
+        updateCartCount();
+    });
+ 
+    
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+        
+        
+      	// 🛒 加入購物車 (只存 productId)
+      	function doAddToCart(button) {
+      	    let productId = $(button).data("id");
+
+      	    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      	    // 若已存在，數量加 1；否則新增
+      	    let existing = cart.find(item => item === productId);
+      	   
+      	        cart.push(productId);
+      	    
+
+      	  	localStorage.setItem("cart", JSON.stringify(cart));
+      	    
+      		// 更新購物車文字顯示
+      	    let cartCount = cart.length;
+      	    let cartLink = $(".mycart_Class"); // 選取你的購物車 <a> 元素
+      	    if (cartCount > 0) {
+      	        cartLink.text("購物車(" + cartCount + ")");
+      	    } else {
+      	        cartLink.text("購物車");
+      	    }
+      	    
+      	    alert("商品已加入購物車！");
+      	}
+    	
+     	// 🛒 加入收藏清單 (只存 productId)
+      	function doAddCollect(button) {
+      	    let productId = $(button).data("id");
+
+      	    let heart = JSON.parse(localStorage.getItem("heart")) || [];
+        	  // 檢查是否已存在
+      	    if (heart.includes(productId)) {
+      	        alert("商品已存在");
+      	        return;
+      	    }
+
+      	  	heart.push(productId);
+
+      	  	localStorage.setItem("heart", JSON.stringify(heart));  	    
+      	    alert("商品已加入收藏！");
+      	}
+
+    </script>
+
+  </body>
+</html>

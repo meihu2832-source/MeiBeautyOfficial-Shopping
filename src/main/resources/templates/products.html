@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <title>MeiBeauty - 全站商品</title>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/font-awesome.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/templatemo-hexashop.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/owl-carousel.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/lightbox.css}">
+
+	 <style>
+    #all-product-table_wrapper {
+        text-align: center !important;
+        float: none !important;
+        margin-top: 20px; /* 可選，讓分頁和內容有點間距 */
+    }
+  </style>
+
+
+<!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a th:href="@{/home/index}" class="logo">
+                            <img th:src="@{/assets/images/logo.png}">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=2}">底妝類</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=3}">保養類</a></li>
+                            <li class="scroll-to-section"><a th:href="@{/home/goProducts?category=4}">彩妝類</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">品牌相關</a>
+                                <ul>
+                                    <li><a th:href="@{/home/goAbout}">About Us</a></li>
+                                    <li><a th:href="@{/home/goProducts}">產品列表</a></li>
+                                    <li><a th:href="@{/home/goSingleProduct}">熱銷冠軍</a></li>
+                                    <li><a th:href="@{/home/goContact}">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">會員專區</a>
+                                <ul>
+                                    <li><a th:href="@{/login/index}" class="loging_Class">會員登入</a></li>
+                                    <li><a href="#">最新優惠</a></li>
+                                    <li><a th:href="@{/home/heartList}">我的收藏清單</a></li>
+                                    <li><a rel="nofollow" href="https://www.youtube.com/" target="_blank">YT頻道</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a th:href="@{/home/mycart}" class="mycart_Class">購物車</a></li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>MeiBeauty Official</h2>
+                        <span>科學專研，溫柔呵護，讓肌膚回歸平衡。展現自我風格，優雅自信隨妝綻放。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>全站商品</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       <!-- 麵包屑 -->
+       <nav id="breadcrumb">
+       	
+       </nav>
+        
+        <!-- 搜尋框 (DataTable 會自動生成) -->
+      <div>
+		<input type="text" id="searchName"  class="form-control" placeholder="搜尋商品...">
+		
+		<div class="container">
+    	<div id="productGrid" class="row g-3"></div> <!-- g-3 = 卡片間距 -->
+		</div>
+		
+		<!-- 隱藏的 DataTable (只用來管理資料，不顯示表格) -->
+    <table id="all-product-table" class="display d-none" style="width:80%;margin:auto;">
+        <thead>
+            <tr>
+<!--                 <th>id</th> -->
+        		<th>photo</th>
+        		<th>name</th>
+        		<th>price</th>
+        		<th>操作</th>
+            </tr>
+        </thead>
+    </table> 
+    </div> 
+
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img th:src="@{/assets/images/white-logo.png}" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                            <li><a href="#">hexashop@company.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">Men’s Shopping</a></li>
+                        <li><a href="#">Women’s Shopping</a></li>
+                        <li><a href="#">Kid's Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved. 
+                        
+                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap -->
+    <script th:src="@{/assets/js/popper.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
+
+    <!-- Plugins -->
+    <script th:src="@{/assets/js/owl-carousel.js}"></script>
+    <script th:src="@{/assets/js/accordions.js}"></script>
+    <script th:src="@{/assets/js/datepicker.js}"></script>
+    <script th:src="@{/assets/js/scrollreveal.min.js}"></script>
+    <script th:src="@{/assets/js/waypoints.min.js}"></script>
+    <script th:src="@{/assets/js/jquery.counterup.min.js}"></script>
+    <script th:src="@{/assets/js/imgfix.min.js}"></script> 
+    <script th:src="@{/assets/js/slick.js}"></script> 
+    <script th:src="@{/assets/js/lightbox.js}"></script> 
+    <script th:src="@{/assets/js/isotope.js}"></script> 
+    
+    <!-- Global Init -->
+    <script th:src="@{/assets/js/custom.js}"></script>
+
+    <script th:inline="javascript">
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+     // 🛒 更新購物車數字 (可重複呼叫)
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartCount = cart.length;
+
+            let cartLink = document.querySelector(".mycart_Class");
+            if (cartCount > 0) {
+                cartLink.textContent = "購物車(" + cartCount + ")";
+            } else {
+                cartLink.textContent = "購物車";
+            }
+        }
+     
+     // 🚀 一進到頁面就跑一次
+        document.addEventListener("DOMContentLoaded", function () {
+            updateCartCount();
+        });
+     
+     
+     
+  	  $(document).ready(function () {
+  	    dt = $('#all-product-table').DataTable({
+  	      serverSide: true,          // 由後端處理分頁/排序/搜尋
+  	      processing: true,          // 顯示處理中指示
+  	      searching: false,          // 若你自己做外部搜尋，把內建搜尋關掉（要用內建可改 true）
+  	      pageLength: 9,
+  	      lengthMenu: [9, 12, 18, 24],
+
+  	      ajax: {//要做真分頁，就勢必要用ajax呼叫API
+  	        url: /*[[@{/api/restController/dopage}]]*/'',
+  	        type: 'POST',
+  	    
+  	        dataSrc: 'data',
+  	      contentType: 'application/json',
+  	      data: function (d) {
+              d.searchName = $('#searchName').val();
+              d.categoryId = categoryId;//d是datatable要送去後端的參數，等於我這邊自己增加一個叫做categoryId的欄位(它會直接對應到後端 DTO 的欄位名稱)，並且等於下面宣告const的categoryId。
+              return JSON.stringify(d); 
+          }
+  	      },
+
+  	      columns: [
+  	        { data: 'photoUrl', title: '照片' 
+//   	        	render: function(data, type, row) {
+//   	          // data 就是 photo 欄位的值 (完整網址)
+//   	          return '<img src="/MeiBeautyOfficial' + data + '" width="80"/>';
+//   	        }
+  	        },
+  	        { data: 'name',  title: '產品名稱'},
+  	        { data: 'price', title: '價格' },
+  	        {
+  	          data: null,
+  	          title: '操作',
+  	          orderable: false,
+  	          searchable: false,
+  	          render: function (data, type, row, meta) {
+  	            return `
+  	              <button class="btn-addToCart"  data-id="${row.productId}" onclick="doAddToCart(this)">加入購物車</button>
+  	              <button class="btn-addCollect" data-id="${row.productId}" onclick="doAddCollect(this)">加入收藏</button>
+  	            `;
+  	          }
+  	        }
+  	      ],
+  	      
+  	    drawCallback: function(settings) {
+            var api = this.api();
+            var data = api.rows({ page: 'current' }).data();
+            var container = $('#productGrid');
+            container.empty();
+
+            for (var i = 0; i < data.length; i++) {
+                var row = data[i];
+                var UUUrl = "http://localhost:8080/MeiBeautyOfficial"+row.photoUrl;
+                var card = 
+                    '<div class="col-4">'+
+                        '<div class="card h-100 shadow-sm">'+
+                            '<img src = '+UUUrl+ ' class="card-img-top" alt="'+row.name+'" width=300px height=400px>'+
+                            '<div class="card-body">'+
+                                '<h5 class="card-title">' +row.name+ '</h5>'+
+                                '<p class="card-text">NT$ '+row.price+'</p>'+
+                                '<button class="btn btn-primary btn-addToCart" data-id="'+row.productId+'" onclick="doAddToCart(this)">加入購物車</button>'+
+                                '<button class="btn btn-outline-secondary btn-addCollect" data-id="'+row.productId+'" onclick="doAddCollect(this)">加入收藏</button>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+                container.append(card);
+            }
+        },
+        language: { 
+            url: "https://cdn.datatables.net/plug-ins/2.0.7/i18n/zh-HANT.json" 
+        },
+        dom: 'ftp' // f = 搜尋框, t = table body, p = 分頁
+    });
+
+    // 隱藏 table 本身，讓卡片呈現
+    $('#all-product-table').hide();
+});
+
+
+  	  // 當自訂搜尋欄改變時，重新載入表格
+  	  $('#searchName').on('keyup', function() {
+  	      dt.ajax.reload();
+  	  });
+  	  
+  	// 🛒 加入購物車 (只存 productId)
+  	function doAddToCart(button) {
+  	    let productId = $(button).data("id");
+
+  	    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  	    // 若已存在，數量加 1；否則新增
+  	    let existing = cart.find(item => item === productId);
+  	   
+  	        cart.push(productId);
+  	    
+
+  	  	localStorage.setItem("cart", JSON.stringify(cart));
+  	    
+  		// 更新購物車文字顯示
+  	    let cartCount = cart.length;
+  	    let cartLink = $(".mycart_Class"); // 選取你的購物車 <a> 元素
+  	    if (cartCount > 0) {
+  	        cartLink.text("購物車(" + cartCount + ")");
+  	    } else {
+  	        cartLink.text("購物車");
+  	    }
+  	    
+  	    alert("商品已加入購物車！");
+  	}
+	
+ 	// 🛒 加入收藏清單 (只存 productId)
+  	function doAddCollect(button) {
+  	    let productId = $(button).data("id");
+
+  	    let heart = JSON.parse(localStorage.getItem("heart")) || [];
+  	   
+  	  // 檢查是否已存在
+  	    if (heart.includes(productId)) {
+  	        alert("商品已存在");
+  	        return;
+  	    }
+
+  	  	heart.push(productId);
+
+  	  	localStorage.setItem("heart", JSON.stringify(heart));  	    
+  	    alert("商品已加入收藏！");
+  	};
+      
+  	
+  	function makeBread(crumbFB){
+  		const el = document.getElementById("breadcrumb");
+  		el.innerHTML=crumbFB
+  			.map((item, index) => 
+  				index === crumbFB.length -1
+  				?`<span>${item.name}</span>`
+  				:`<a href="/MeiBeautyOfficial/home/goProducts?category=${item.categoryId}">${item.name}</a> >`
+  		)
+  		.join("");
+  	};
+  	
+ // 先取得 categoryId，例如從 URL query 參數抓
+  	const urlParams = new URLSearchParams(window.location.search);
+  	const categoryId = urlParams.get('category')||1;
+  	
+ // 呼叫 RestController 拿 breadcrumb JSON
+  	fetch(`/MeiBeautyOfficial/api/restController/breadcrumb/${categoryId}`)
+  	  .then(response => response.json())
+  	  .then(crumbFB => {
+  	    // 把取得的資料傳給你原本的 makeBread
+  	    makeBread(crumbFB);
+  	  })
+  	  .catch(err => console.error('抓 breadcrumb 出錯', err));
+  	
+    </script>
+
+  </body>
+
+</html>

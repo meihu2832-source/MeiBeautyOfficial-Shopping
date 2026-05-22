@@ -1,0 +1,50 @@
+  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>註冊會員</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+</head>
+<body>
+    <h2>註冊會員</h2>
+	
+<!--	注意${跟@{用法不一樣--->
+<!--	1.${...}（取變數）-->
+<!--	用途：取得「後端 Model 傳來」的屬性值，或是物件中的值。-->
+<!--	寫法：${變數名}，通常用在 th:text、th:value、th:if、th:each 等。-->
+<!--	對應 Spring Boot 的 Model-->
+<!--	例如 model.addAttribute("addMsg", "成功")，在頁面就可用 ${addMsg}。-->
+<!--	2.@{...}（解析 URL）-->
+<!--	用途：產生動態 URL，會自動幫你加上 Context Path、變數參數等。-->
+<!--	寫法：@{...}，常用在 th:action、th:href、th:src 等-->
+<!--	支援參數帶入-->
+<!--	例如 /students/addInex 可以寫成 @{/students/addInex}-->
+	
+	<input type="hidden" id="resultMsg" name="resultMsg" th:value="${addMsg}"/>
+	
+    <form th:action="@{/users/addSubmit}" method="post">
+        帳號：<input type="text" name="name" required><br>
+        密碼：<input type="number" name="pwd" required><br><!-- 後端對應是對照name這個屬性，這邊名字一定要跟DTO一模一樣 -->        
+        <button type="submit">確認送出</button>    <!-- 按鈕一定要寫在FORM裡面，表示要將此表單的內容送出 -->
+    </form>
+	<br>
+	<br>
+	<a th:href="@{/home/index}" class="return_home">返回首頁</a>
+	
+	<script>
+		window.onload = function() {//onload = 當 網頁完全載入完成 後要執行的事件
+		    var msg = $('#resultMsg').val();
+		    if (msg) {//if (msg)的寫法意思是若msg有值
+		        alert(msg);
+		    }
+		};
+	</script>
+	
+	<!--${addMsg}是在接值。 @{/users/addSubmit}是指url路徑 -->
+	
+</body>
+</html>
+  
